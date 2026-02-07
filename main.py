@@ -28,10 +28,11 @@ def transform_object_to_center(obj):
 
 def main():
     clear_scene()
-    bpy.ops.import_mesh.stl(filepath=INPUT_PATH)
+
+    bpy.ops.wm.stl_import(filepath=INPUT_PATH)
     obj = bpy.context.selected_objects[0]
     transform_object_to_center(obj)
-    bpy.ops.export_mesh.stl(filepath=OUTPUT_PATH)
+    bpy.ops.wm.stl_export(filepath=OUTPUT_PATH)
 
 
 if __name__ == '__main__':

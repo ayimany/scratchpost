@@ -1,0 +1,9 @@
+[project]
+name = "scratchpole"
+version = "0.1.0"
+description = "Add your description here"
+requires-python = ">=3.11"
+dependencies = [
+    "bpy>=5.0.1",
+    "mathutils>=3.3.0",
+]

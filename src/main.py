@@ -1,22 +1,9 @@
-import argparse
 import subprocess
 import data_interests
+from arguments import args
 
 def main():
     command = ['prusa-slicer']
-
-    parser = argparse.ArgumentParser(
-        prog='scratchpole',
-        description='Helps you scratch my pole',
-        epilog='Happy slicing.',
-    )
-
-    parser.add_argument('file', metavar='FILE', type=str)
-    parser.add_argument('--debug', type=int, default=0)
-    parser.add_argument('-o', '--output', metavar='FILE', type=str, default='scratched-pole.gcode')
-    parser.add_argument('--settings', metavar='FILE', type=str, nargs='*', required=True)
-
-    args = parser.parse_args()
 
     for setting in args.settings:
         command.append('--load')

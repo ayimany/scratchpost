@@ -3,7 +3,7 @@ import re
 from dataclasses import dataclass
 from typing import Optional, List, Dict, Any
 
-from scratchpole.available_interests import interests, Interest, get_nested_interests
+from scratchpost.available_interests import interests, Interest, get_nested_interests
 
 
 def parse_prusa_time(time_str: str) -> int:

@@ -1,9 +1,13 @@
 import logging
 import os
-from scratchpole.arguments import arguments
-from scratchpole.data_interests import find_interest, extract_interests
-from scratchpole.export import export_json, export_file
-from scratchpole.prusa import build_command, run_command, clean_gcode
+from scratchpost import (
+    arguments,
+    extract_interests,
+    export_file,
+    build_command,
+    run_command,
+    clean_gcode
+)
 
 
 def main():

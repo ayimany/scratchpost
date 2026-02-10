@@ -3,7 +3,7 @@ import tempfile
 
 
 parser = argparse.ArgumentParser(
-    prog='scratchpole',
+    prog='scratchpost',
     description='A tool for extracting data from Prusa Slicer gcode.',
 )
 

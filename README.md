@@ -5,7 +5,7 @@ A straightforward CLI tool to obtain 3D object slice data using Prusa Slicer.
 Wait for implementation. The idea is:
 
 ```shell
-scratchpole --export-to-file <filename> \
+scratchpost --export-to-file <filename> \
   --machine-settings <machine>.ini      \
   --process-settings <process>.ini      \
   --filament-settings <filament>.ini    \

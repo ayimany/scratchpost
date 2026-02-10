@@ -15,7 +15,7 @@ def main():
         logging.error('Please provide at least one interest')
         exit(1)
 
-    interests = [find_interest(interest, data) for interest in arguments.interests]
+    interests = [find_interest(interest, data, arguments.time_format) for interest in arguments.interests]
 
     if arguments.export is not None:
         export_file(interests, arguments.export)

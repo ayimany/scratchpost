@@ -67,4 +67,11 @@ parser.add_argument('--pretty-print',
                     )
 
 
+parser.add_argument('--time-format',
+                    choices=['hours', 'minutes', 'seconds', 'full'],
+                    default='full',
+                    help='The format to display time-related keys in.',
+                    )
+
+
 arguments = parser.parse_args()

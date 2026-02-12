@@ -24,7 +24,6 @@ def run_command(command, debug: bool):
     stdout = None if debug else subprocess.DEVNULL
     stderr = None if debug else subprocess.DEVNULL
     res = subprocess.run(command, stdout=stdout, stderr=stderr)
-    print(" ".join(command))
 
     if res.returncode != 0:
         logger.warning(f"Prusa Slicer failed with exit code {res.returncode}. Use --debug to see the full output.")

@@ -1,7 +1,7 @@
 import csv
 import json
 from typing import List, Dict, Any
-
+from .logfmt import logger
 
 def interests_to_dict(interests) -> Dict[str, Any]:
     mapped_interests = {}
@@ -46,5 +46,4 @@ def export_yaml(data, filename):
         with open(filename, 'w') as f:
             yaml.dump(data, f, default_flow_style=False)
     except ImportError:
-        import logging
-        logging.error("PyYAML is not installed. Cannot export to YAML.")
+        logger.error("PyYAML is not installed. Cannot export to YAML.")

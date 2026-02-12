@@ -1,9 +1,9 @@
-import logging
 import re
 from dataclasses import dataclass
-from typing import Optional, List, Dict, Any
+from typing import Optional, List
 
-from scratchpost.available_interests import interests, Interest, get_nested_interests
+from .available_interests import interests
+from .logfmt import logger
 
 
 def parse_prusa_time(time_str: str) -> int:
@@ -49,7 +49,7 @@ class ExtractedInterest:
 
 def find_interest(key: str, gcode: str, time_format: str = 'full') -> Optional[ExtractedInterest]:
     if key not in interests.keys():
-        logging.warning(f'Could not find interest {key}')
+        logger.warning(f'Could not find interest {key}')
         return None
 
     interest = interests[key]
@@ -67,7 +67,7 @@ def find_interest(key: str, gcode: str, time_format: str = 'full') -> Optional[E
             value
         )
 
-    logging.warning(f'Could not find interest {key} within the parsed gcode')
+    logger.warning(f'Could not find interest {key} within the parsed gcode')
     return None
 
 

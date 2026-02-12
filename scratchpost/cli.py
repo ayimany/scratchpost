@@ -1,26 +1,22 @@
-import logging
 import os
-
-from scratchpost import (
-    arguments,
-    extract_interests,
-    export_file,
-    build_command,
-    run_command,
-    clean_gcode
-)
+from .arguments import parse_args
+from .data_interests import extract_interests
+from .export import export_file
+from .prusa import build_command, run_command, clean_gcode
+from .logfmt import logger
 
 
 def main():
+    arguments = parse_args()
     has_non_existent_files = False
 
     if not os.path.exists(arguments.file):
-        logging.error(f"File {arguments.file} does not exist")
+        logger.error(f"File {arguments.file} does not exist")
         has_non_existent_files = True
 
     for path in arguments.settings:
         if not os.path.exists(path):
-            logging.error(f"File {path} does not exist")
+            logger.error(f"File {path} does not exist")
             has_non_existent_files = True
 
     if has_non_existent_files:

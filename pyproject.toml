@@ -6,7 +6,7 @@ requires-python = ">=3.14"
 dependencies = []
 
 [project.scripts]
-scratchpost = "scratchpost:cli.main"
+scratchpost = "scratchpost.cli:main"
 
 [build-system]
 requires = ["setuptools>=61.0"]

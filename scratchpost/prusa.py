@@ -1,6 +1,8 @@
 import os
 import subprocess
 
+from .logfmt import logger
+
 
 def build_command(args):
     command = ['prusa-slicer']
@@ -21,7 +23,12 @@ def run_command(command, debug: bool):
     # Run the PS command
     stdout = None if debug else subprocess.DEVNULL
     stderr = None if debug else subprocess.DEVNULL
-    subprocess.run(command, stdout=stdout, stderr=stderr)
+    res = subprocess.run(command, stdout=stdout, stderr=stderr)
+    print(" ".join(command))
+
+    if res.returncode != 0:
+        logger.warning(f"Prusa Slicer failed with exit code {res.returncode}. Use --debug to see the full output.")
+        exit(res.returncode)
 
 def read_gcode(filename):
     with open(filename) as f:

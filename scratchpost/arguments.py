@@ -8,11 +8,12 @@ def get_parser():
         description='A tool for extracting data from Prusa Slicer gcode.',
     )
 
-    # The file to slice
-    parser.add_argument('file',
-                        help='The file to extract data from.',
+    # The files to slice
+    parser.add_argument('files',
+                        help='The files to extract data from.',
                         metavar='FILE',
-                        type=str
+                        type=str,
+                        nargs='+',
                         )
 
     # Prusa Slicer settings to load

@@ -4,7 +4,7 @@ import subprocess
 from .logfmt import logger
 
 
-def build_command(args):
+def build_command(args, input_file, gcode_output):
     command = ['prusa-slicer']
 
     for setting in args.settings:
@@ -14,8 +14,8 @@ def build_command(args):
     command.append('-g')
     command.append('-s')
     command.append('--output')
-    command.append(args.gcode_output)
-    command.append(args.file)
+    command.append(gcode_output)
+    command.append(input_file)
 
     return command
 

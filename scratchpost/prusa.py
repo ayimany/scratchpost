@@ -21,11 +21,19 @@ def build_command(args, input_file, gcode_output):
 
 def run_command(command, debug: bool):
     # Run the PS command
-    stdout = None if debug else subprocess.DEVNULL
-    stderr = None if debug else subprocess.DEVNULL
-    res = subprocess.run(command, stdout=stdout, stderr=stderr)
+    res = subprocess.run(command, capture_output=True, text=True)
+
+    if debug:
+        if res.stdout:
+            print(res.stdout)
+        if res.stderr:
+            print(res.stderr)
 
     if res.returncode != 0:
+        error_msg = "The file contains polygons with more than 4 vertices"
+        if error_msg in res.stdout or error_msg in res.stderr:
+            exit(4)
+
         logger.warning(f"Prusa Slicer failed with exit code {res.returncode}. Use --debug to see the full output.")
         exit(res.returncode)
 
